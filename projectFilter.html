@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="project.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Filters</title>
+</head>
+
+<body class="bg-gray-50 min-h-screen font-sans text-gray-900">
+    <div class="container mx-auto px-4 py-8">
+        <div class="header mb-6 text-center">
+            <h1 class="text-4xl font-extrabold text-indigo-600 tracking-tight">Filters for you</h1>
+        </div>
+        <div class="navbar mb-8 bg-white shadow-md rounded-lg p-2">
+            <nav id="navigate" class="flex justify-center gap-6 font-bold text-indigo-500"></nav>
+        </div>
+    </div>
+
+    <div class="main max-w-6xl mx-auto px-4">
+        <form id="filterForm" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10 bg-white p-6 shadow-sm rounded-xl border border-gray-100">
+            <select id="selectYear" onchange="displaySelectMonth(); addFilteredEx()" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2.5 border text-gray-700 bg-gray-50 cursor-pointer"></select>
+            
+            <select id="selectMonth" onchange="displaySelectDay(); addFilteredEx()" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2.5 border text-gray-700 bg-gray-50 cursor-pointer"></select>
+            
+            <select id="selectDay" onchange="addFilteredEx()" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2.5 border text-gray-700 bg-gray-50 cursor-pointer"></select>
+            
+            <input id="maxAmount" type="number" placeholder="Max amount" min="0" oninput="addFilteredEx()" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2.5 border text-gray-700 bg-gray-50">
+        </form>
+
+        <div class="overflow-x-auto shadow-xl rounded-xl border border-gray-200">
+            <table class="min-w-full table-auto border-collapse bg-white text-sm md:text-base">
+                <thead class="bg-indigo-600 text-white">
+                    <tr>
+                        <th class="p-4 text-left font-semibold uppercase tracking-wider">Category</th>
+                        <th class="p-4 text-left font-semibold uppercase tracking-wider">Description</th>
+                        <th class="p-4 text-left font-semibold uppercase tracking-wider">Amount</th>
+                        <th class="p-4 text-left font-semibold uppercase tracking-wider">Date</th>
+                    </tr>
+                </thead>
+                <tbody id="newFilteredEx" class="divide-y divide-gray-100 bg-white italic"></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
